@@ -1,0 +1,90 @@
+apply plugin: 'com.android.model.application'
+
+def lib_distribution_root = '../distribution'
+
+model {
+    repositories {
+        libs(PrebuiltLibraries) {
+            prebuilt {
+                headers.srcDir "${lib_distribution_root}/add_test/include"
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file("${lib_distribution_root}/add_test/lib/${targetPlatform.getName()}/libadd_test.so")
+                }
+            }
+        }
+    }
+
+    android {
+        compileSdkVersion = 23
+        buildToolsVersion = '23.0.2'
+
+        defaultConfig {
+            applicationId = 'com.example.hellojni'
+            minSdkVersion.apiLevel = 4
+            targetSdkVersion.apiLevel = 23
+        }
+
+        sources {
+            main {
+                jni {
+                    dependencies {
+                        library 'prebuilt' linkage 'shared'
+                    }
+                }
+
+                jniLibs {
+                    source {
+                        srcDir "${lib_distribution_root}/add_test/lib"
+                    }
+                }
+
+            }
+        }
+        /*
+         * native build settings: taking default for almost everything
+         */
+        ndk {
+            moduleName = 'hello-jni'
+            ldLibs.add("log")
+        }
+        buildTypes {
+            release {
+                minifyEnabled = false
+                proguardFiles.add(file('proguard-rules.txt'))
+            }
+        }
+        productFlavors {
+            // for detailed abiFilter descriptions, refer to "Supported ABIs" @
+            // https://developer.android.com/ndk/guides/abis.html#sa
+            create("arm") {
+                ndk.abiFilters.add("armeabi")
+            }
+            create("arm7") {
+                ndk.abiFilters.add("armeabi-v7a")
+            }
+            create("arm8") {
+                ndk.abiFilters.add("arm64-v8a")
+            }
+            create("x86") {
+                ndk.abiFilters.add("x86")
+            }
+            create("x86-64") {
+                ndk.abiFilters.add("x86_64")
+            }
+            create("mips") {
+                ndk.abiFilters.add("mips")
+            }
+            create("mips-64") {
+                ndk.abiFilters.add("mips64")
+            }
+            // To include all cpu architectures, leaves abiFilters empty
+            create("all")
+        }
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name.contains('compile')) {
+        task.dependsOn ':prebuild:distributeLib'
+    }
+}
