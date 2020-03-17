@@ -1,8 +1,8 @@
 >本文主要讲述如何在jni中调用第三方共享so
 
->项目源码地址：https://github.com/chenjim/thirdPartyJniSo
+>源码地址：https://github.com/chenjim/thirdPartyJniSo
 
->本博客地址：http://blog.csdn.net/csqingchen/article/details/51548839
+>博客地址：http://blog.csdn.net/csqingchen/article/details/51548839
 
 >android studio 中如何使用，参见本项目thirdPartyJniSoAS目录studio工程
 
@@ -17,7 +17,7 @@
     
     - 命令行切换到`hirdPartyJniSo\thirdPartyJniSoEclipse`,
     - 执行`ndk-build`在libs中生成HelloJni.java需要的.so库  
-    - Eclipse打开thirdPartyJniSoEclipse即可
+    - Eclipse打开导入thirdPartyJniSoEclipse即可
     
 3. Android Studio使用
 
@@ -34,6 +34,8 @@
 参考文章：
 
 http://blog.csdn.net/educast/article/details/12773127/  
+
+https://developer.android.com/ndk/guides/abis.html
 
 http://tools.android.com/tech-docs/new-build-system/gradle-experimental  
 
