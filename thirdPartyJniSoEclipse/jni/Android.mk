@@ -19,7 +19,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE    := libadd_test_pre
-LOCAL_SRC_FILES :=  libadd_test.so
+LOCAL_SRC_FILES :=  ../../prebuild/libs/${TARGET_ARCH_ABI}/libadd_test.so
 include $(PREBUILT_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)    
