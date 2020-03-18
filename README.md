@@ -1,8 +1,7 @@
->本文主要讲述如何在jni中调用第三方共享so
 
->源码地址：https://github.com/chenjim/thirdPartyJniSo
-
->博客地址：http://blog.csdn.net/csqingchen/article/details/51548839
+>本文主要讲述如何在jni中调用第三方共享so  
+>源码地址：[https://gitee.com/chenjim/thirdPartyJniSo](https://gitee.com/chenjim/thirdPartyJniSo)  
+>博客地址：[http://blog.csdn.net/csqingchen/article/details/51548839](http://blog.csdn.net/csqingchen/article/details/51548839) 
 
 ### 如何使用
 
@@ -33,13 +32,9 @@
 
 参考文章：
 
-https://github.com/android/ndk-samples/tree/master/hello-libs
+[google ndk 示例代码hello-libs](https://github.com/android/ndk-samples/tree/master/hello-libs)  
+[google Android abis 介绍](https://developer.android.com/ndk/guides/abis.html)  
+[CSDN Android.mk库编译](http://blog.csdn.net/educast/article/details/12773127)  
 
-https://developer.android.com/ndk/guides/abis.html
 
-http://blog.csdn.net/educast/article/details/12773127/  
-
-http://tools.android.com/tech-docs/new-build-system/gradle-experimental  
-
-https://github.com/googlesamples/android-ndk/tree/master/hello-libs  
 
