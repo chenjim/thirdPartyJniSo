@@ -1,4 +1,4 @@
-
+// 第三方so的头文件，由第三方和so一起提供
 
 #ifndef ADD_TEST_H
 #define ADD_TEST_H

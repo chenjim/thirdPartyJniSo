@@ -5,26 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+/**
+ * 当前界面使用JNI的方法并显示到界面上
+ */
 public class MainActivity extends AppCompatActivity {
-
-    // Used to load the 'native-lib' library on application startup.
-    static {
-        System.loadLibrary("native-lib");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Example of a call to a native method
         TextView tv = findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
-    }
+        //调用第一个jni方法，返回一个字符串
+        tv.setText(JNIUtils.stringFromJNI());
 
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
+        int a = 100, b = 60;
+        //调用第二个jni方法，计算两个数字求和的结果
+        int result = JNIUtils.addFunctionFromJNI(a, b);
+        String resultStr = "从JNI获取的计算结果为：" + a + " + " + b + " = " + result;
+        TextView tv2 = findViewById(R.id.sample_text2);
+        tv2.setText(resultStr);
+    }
 }
