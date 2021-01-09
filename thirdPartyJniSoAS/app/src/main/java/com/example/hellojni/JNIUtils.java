@@ -16,4 +16,6 @@ public class JNIUtils {
     public static native String stringFromJNI();
 
     public static native int addFunctionFromJNI(int a, int b);
+
+    public static native int subFunctionFromJNI(int a, int b);
 }

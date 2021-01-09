@@ -45,6 +45,36 @@ set_target_properties(
         ${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libadd_test.so)
 
 
+#设置第三方库  动态方式加载
+add_library(
+        # 库名字
+        libsub_test_pre
+
+        # 库类型
+        SHARED
+
+        #IMPORTED: 表示只需要导入，不需要构建so库。
+        IMPORTED)
+
+# 设置第三方so库的路径   引入libadd_test.so文件
+set_target_properties(
+        # 库名字
+        # Specifies the target library.
+        libsub_test_pre
+
+        # Specifies the parameter you want to define.
+        # import so库
+        PROPERTIES IMPORTED_LOCATION
+
+        #第三方库的so路径
+        #可以使用 ANDROID_ABI 路径变量，将多个 ABI 版本的库添加到你的 CMake 构建脚本中。
+        # Provides the path to the library you want to import.
+
+        # ${CMAKE_CURRENT_SOURCE_DIR} 路径路径为：    src\main\cpp\CMakeLists.txt
+        # ${ANDROID_ABI} 路径变量  arm64-v8a/armeabi-v7a/x86/x86-64 等
+        ${CMAKE_CURRENT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libsub_test.so)
+
+
 #设置本地库  指定将源码文件native-lib.cpp编译成共享库，名字为：native-lib
 add_library(
         # 库名字
@@ -89,6 +119,8 @@ target_link_libraries(
 
         # 第三方so库
         libadd_test_pre
+
+        libsub_test_pre
 
         # Links the target library to the log library
         # included in the NDK.

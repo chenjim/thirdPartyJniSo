@@ -3,6 +3,8 @@
 buildscript {
     
     repositories {
+        maven { url "http://172.28.2.228:8081/nexus/content/groups/android_public/" }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
         google()
         jcenter()
         
@@ -18,6 +20,8 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "http://172.28.2.228:8081/nexus/content/groups/android_public/" }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
         google()
         jcenter()
         
